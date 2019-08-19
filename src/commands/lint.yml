@@ -26,6 +26,10 @@ parameters:
     description: directory path list of the lint target
     type: string
     default: "./..."
+  flags:
+    description:  flags for `golangci-lint run`
+    type: string
+    default: ""
 
 steps:
   - when:
@@ -40,4 +44,4 @@ steps:
   - run:
       name: Run goalngci-lint
       working_directory: << parameters.working-directory >>
-      command: golangci-lint run << parameters.directories >>
+      command: golangci-lint run << parameters.directories >> << parameters.flags >>
